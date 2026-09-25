@@ -1,6 +1,9 @@
 Indoor CFD dataset -- put it here.
 
-Download:  Zenodo <<ZENODO_DOI>>   or   Hugging Face <<HF_DATASET_ID>>
+Download:  Zenodo 10.5281/zenodo.22955315
+
+    wget https://zenodo.org/records/22955315/files/indoor_cfd_dataset.tar.gz
+    tar -xzf indoor_cfd_dataset.tar.gz -C cfd/dataset/
 
 Extract so that every case is a directory directly under this one:
 

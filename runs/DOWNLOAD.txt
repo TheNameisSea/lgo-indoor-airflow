@@ -1,7 +1,7 @@
 Training output goes here, one directory per run. Nothing to download unless you
 want the trained checkpoints:
 
-    Hugging Face <<HF_MODEL_ID>>
+    (released after the review period)
 
 Put each run in runs/<run_name>/ with all four of its files:
     args.json  best.pth  thermo_stats.pt  history.json

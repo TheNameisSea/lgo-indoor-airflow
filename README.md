@@ -36,8 +36,8 @@ No data is committed. Download it and place it as described in
 
 | data | source | goes in |
 |---|---|---|
-| indoor CFD dataset | Zenodo `<<ZENODO_DOI>>` / Hugging Face `<<HF_DATASET_ID>>` | `cfd/dataset/` |
-| trained checkpoints (optional) | Hugging Face `<<HF_MODEL_ID>>` | `runs/` |
+| indoor CFD dataset | Zenodo [10.5281/zenodo.22955315](https://doi.org/10.5281/zenodo.22955315) | `cfd/dataset/` |
+| trained checkpoints (optional) | released after the review period | `runs/` |
 | ShapeNet-Car | Umetani release + Zenodo 13737721 | `external/shapenet_car/` |
 
 Every directory that expects data also carries a `DOWNLOAD.txt`.
@@ -69,5 +69,12 @@ $PY evaluate.py --run runs/NAME --split splits_cfd_gap/val --out results/NAME_va
 ## Citation
 
 ```bibtex
-<<BIBTEX>>
+@inproceedings{anonymous2027separation,
+  title     = {Separation-Controlled Layout Generalisation for Three-Dimensional
+               Indoor Airflow Prediction with a Dual-Stream Neural Operator},
+  author    = {Anonymous Authors},
+  booktitle = {Submitted to the International Conference on Learning Representations},
+  year      = {2027},
+  note      = {Under review}
+}
 ```

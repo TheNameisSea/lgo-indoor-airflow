@@ -17,8 +17,16 @@ CPY=/path/to/cfd-env/bin/python      # OpenFOAM tooling, no torch
 
 ### Indoor CFD dataset
 
-Download it from Zenodo `<<ZENODO_DOI>>` or Hugging Face `<<HF_DATASET_ID>>` and
-extract it so that each case is a directory directly under `cfd/dataset/`:
+Download it from Zenodo [10.5281/zenodo.22955315](https://doi.org/10.5281/zenodo.22955315)
+and extract it so that each case is a directory directly under `cfd/dataset/`:
+
+```bash
+# Zenodo: 4.25 GB archive; check it against SHA256SUMS from the same record
+wget https://zenodo.org/records/22955315/files/indoor_cfd_dataset.tar.gz
+tar -xzf indoor_cfd_dataset.tar.gz -C cfd/dataset/
+```
+
+The result:
 
 ```
 cfd/dataset/
@@ -40,7 +48,8 @@ for d in cfd/dataset/*/; do [ "$(ls "$d" | wc -l)" = 21 ] || echo "incomplete: $
 
 ### Trained checkpoints (optional)
 
-Download from Hugging Face `<<HF_MODEL_ID>>` into `runs/`, one directory per run:
+The trained checkpoints are released after the review period. Place them in
+`runs/`, one directory per run:
 
 ```
 runs/<run_name>/args.json          the flags the run was trained with
