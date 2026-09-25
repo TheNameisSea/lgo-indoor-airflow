@@ -20,11 +20,20 @@ CPY=/path/to/cfd-env/bin/python      # OpenFOAM tooling, no torch
 Download it from Zenodo [10.5281/zenodo.22955315](https://doi.org/10.5281/zenodo.22955315)
 and extract it so that each case is a directory directly under `cfd/dataset/`:
 
+The 4.25 GB archive is stored as 41 parts of 100 MB. Download the parts and
+`SHA256SUMS`, join the parts, check the joined archive, then extract it:
+
 ```bash
-# Zenodo: 4.25 GB archive; check it against SHA256SUMS from the same record
-wget https://zenodo.org/records/22955315/files/indoor_cfd_dataset.tar.gz
-tar -xzf indoor_cfd_dataset.tar.gz -C cfd/dataset/
+mkdir -p zenodo_download && cd zenodo_download
+Z=https://zenodo.org/records/22955315/files
+wget -c "$Z/SHA256SUMS"
+for i in $(seq -w 0 40); do wget -c "$Z/indoor_cfd_dataset.tar.gz.part-0$i"; done
+cat indoor_cfd_dataset.tar.gz.part-* > indoor_cfd_dataset.tar.gz
+sha256sum -c SHA256SUMS                    # must print: indoor_cfd_dataset.tar.gz: OK
+cd .. && tar -xzf zenodo_download/indoor_cfd_dataset.tar.gz -C cfd/dataset/
 ```
+
+`wget -c` resumes an interrupted part, so the loop can simply be re-run.
 
 The result:
 

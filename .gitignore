@@ -72,3 +72,6 @@ splits_shapenet*/*/
 *.q
 .tune_*.laststart
 .tmpdiag
+
+# Downloaded dataset parts (REPRODUCING.md §1)
+zenodo_download/

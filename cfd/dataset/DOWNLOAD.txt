@@ -2,8 +2,15 @@ Indoor CFD dataset -- put it here.
 
 Download:  Zenodo 10.5281/zenodo.22955315
 
-    wget https://zenodo.org/records/22955315/files/indoor_cfd_dataset.tar.gz
-    tar -xzf indoor_cfd_dataset.tar.gz -C cfd/dataset/
+The archive is stored as 41 parts of 100 MB. From the repository root:
+
+    mkdir -p zenodo_download && cd zenodo_download
+    Z=https://zenodo.org/records/22955315/files
+    wget -c "$Z/SHA256SUMS"
+    for i in $(seq -w 0 40); do wget -c "$Z/indoor_cfd_dataset.tar.gz.part-0$i"; done
+    cat indoor_cfd_dataset.tar.gz.part-* > indoor_cfd_dataset.tar.gz
+    sha256sum -c SHA256SUMS          # must print: indoor_cfd_dataset.tar.gz: OK
+    cd .. && tar -xzf zenodo_download/indoor_cfd_dataset.tar.gz -C cfd/dataset/
 
 Extract so that every case is a directory directly under this one:
 
