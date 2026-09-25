@@ -1,0 +1,8 @@
+# ML environment: training, evaluation, tests. Python 3.12.
+# Install torch first with the CUDA build for your system (pytorch.org).
+torch==2.13.0
+numpy==2.4.4
+scipy==1.18.0
+pandas==3.0.3
+matplotlib==3.11.0
+neuraloperator==2.0.0

@@ -1,0 +1,74 @@
+# Data, checkpoints and results are not committed. Each directory that
+# expects data keeps a DOWNLOAD.txt saying what belongs there -- those
+# notes ARE tracked, via the negations below.
+
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Run outputs — checkpoints are large.
+runs/*
+!runs/README.txt
+!runs/DOWNLOAD.txt
+logs/*
+!logs/DOWNLOAD.txt
+results/*
+!results/README.txt
+!results/DOWNLOAD.txt
+*.pth
+*.log
+
+# Caches (regenerable from the dataset)
+cache/
+*.npz
+
+# Splits are symlink trees; the assignment is tracked as JSON, not as links.
+splits/*/
+
+# CAD handed over by the CFD team; large binaries, kept out of git
+step/*.x_b
+step/*.png
+step/*.jpg
+
+# Generated CFD geometry (regenerable: python cfd/step_to_stl.py)
+cfd/geometry/*.stl
+cfd/bc/
+cfd/run/
+cfd/dataset/*
+!cfd/dataset/DOWNLOAD.txt
+cfd/geometry_*/
+
+# Generated-dataset split symlinks (defined in code: data/splits_cfd.py)
+splits_cfd/*/
+
+# Layout-gap split symlinks (defined in code: data/splits_cfd_gap.py;
+# the assignment itself is committed as data/splits_cfd_gap.json)
+splits_cfd_gap/*/
+
+# The gap-0.58 trees, same deal. GLOBBED, not listed one by one: the previous
+# two entries were literal, so `splits_cfd_gap58/` and `splits_cfd_gap58_k24/`
+# were never covered and `git add -A` would have committed 386 ABSOLUTE symlinks
+# into cfd/dataset/ -- machine-specific paths, and 386 of the 449 files git saw.
+# Any future splits_cfd_gap<whatever>/ is now covered by default.
+splits_cfd_gap*/*/
+
+# External benchmark data (ShapeNet-Car), re-downloadable. The split assignment
+# itself is committed as data/splits_shapenet*.json.
+external/*
+!external/shapenet_car/
+external/shapenet_car/*
+!external/shapenet_car/DOWNLOAD.txt
+splits_shapenet*/*/
+
+# Sweep/eval runtime state. These are MUTATED IN PLACE while a sweep runs
+# (`take()` does `sed -i 1d` on the queue), so tracking them dirties the tree on
+# every run -- and a checkout could resurrect a stale queue and make a sweep skip
+# or repeat cells. Same spirit as runs/ and logs/ above: the scripts are the
+# artefact, their work queues are not.
+*.lock
+*.queue
+*.queue.bak
+*.q
+.tune_*.laststart
+.tmpdiag

@@ -1,0 +1,2 @@
+Intentionally empty. Normalisation statistics are computed from each run's own
+training set and saved in its run directory. Do not pass --stats_path.

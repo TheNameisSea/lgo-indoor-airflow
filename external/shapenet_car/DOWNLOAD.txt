@@ -1,0 +1,17 @@
+ShapeNet-Car -- put it here. Two downloads are needed.
+
+1. Raw Umetani release (volume velocity field), 2.03 GB:
+       http://www.nobuyuki-umetani.com/publication/mlcfd_data.zip
+   Fetch with ./fetch_shapenet_raw.sh (resumable), then unpack into raw/:
+       unzip -q mlcfd_data.zip 'mlcfd_data/training_data/*'
+       mkdir -p raw && for f in mlcfd_data/training_data/param*.tar.gz; do tar -xzf "$f" -C raw; done
+
+2. Zenodo record 13737721 (case identifiers used by the committed splits), 71 MB:
+       https://zenodo.org/records/13737721/files/processed-car-pressure-data.zip
+       unzip -q processed-car-pressure-data.zip -x '__MACOSX/*'
+
+Resulting layout:
+    external/shapenet_car/raw/param0/ ... raw/param8/
+    external/shapenet_car/processed-car-pressure-data/data/press_*.npy
+
+Full commands: REPRODUCING.md, step 1.

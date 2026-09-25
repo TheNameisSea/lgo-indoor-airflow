@@ -1,0 +1,12 @@
+Indoor CFD dataset -- put it here.
+
+Download:  Zenodo <<ZENODO_DOI>>   or   Hugging Face <<HF_DATASET_ID>>
+
+Extract so that every case is a directory directly under this one:
+
+    cfd/dataset/B000/Fluid_data.csv
+    cfd/dataset/B000/New_HVAC.csv
+    cfd/dataset/B000/...            21 CSVs per case, 193 cases
+
+Then build the split trees: REPRODUCING.md, step 2.
+To generate the data yourself instead: REPRODUCING.md, step 8.

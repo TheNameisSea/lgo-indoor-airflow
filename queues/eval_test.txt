@@ -1,0 +1,14 @@
+final30_deeponet_lr3e-4 splits_cfd_gap/test gaptest
+final30_gino_lr3e-3 splits_cfd_gap/test gaptest
+final30_ginot_lr1e-4 splits_cfd_gap/test gaptest
+final30_lgo_gino_lr3e-3 splits_cfd_gap/test gaptest
+final30_lgo_ginot_lr1e-3 splits_cfd_gap/test gaptest
+final30_lgo_lr1e-3 splits_cfd_gap/test gaptest
+final30_transolver_lr1e-3 splits_cfd_gap/test gaptest
+final58_deeponet_lr3e-4 splits_cfd_gap58/test gap58test
+final58_gino_lr3e-3 splits_cfd_gap58/test gap58test
+final58_ginot_lr1e-4 splits_cfd_gap58/test gap58test
+final58_lgo_gino_lr3e-3 splits_cfd_gap58/test gap58test
+final58_lgo_ginot_lr1e-3 splits_cfd_gap58/test gap58test
+final58_lgo_lr1e-3 splits_cfd_gap58/test gap58test
+final58_transolver_lr1e-3 splits_cfd_gap58/test gap58test

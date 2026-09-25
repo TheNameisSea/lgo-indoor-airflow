@@ -1,0 +1,4 @@
+Generated ShapeNet-Car tree. Nothing to download.
+
+Built from external/shapenet_car/ by data/shapenet_export.py and
+data/shapenet_fold_repartition.py:  REPRODUCING.md, step 2.

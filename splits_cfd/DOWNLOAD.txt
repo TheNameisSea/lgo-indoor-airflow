@@ -1,0 +1,4 @@
+Generated split tree (symlinks into cfd/dataset/). Nothing to download.
+
+The split assignment is committed under data/. Build this tree after putting the
+dataset in cfd/dataset/:  REPRODUCING.md, step 2.

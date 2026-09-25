@@ -1,0 +1,81 @@
+{
+  "_comment": "Boundary conditions measured from the existing STAR-CCM+ dataset (Case_07 low fan, Case_16 high fan). These are held FIXED across every generated case so that FCU LAYOUT is the only variable. Extracted with the patch-level A5 rule (cluster, then label by the sign of MEAN w) -- the per-point sign rule misclassifies return fringes as supply and reports 6 supply panels instead of 3.",
+  "room": {
+    "bbox_m": [
+      [
+        0.0,
+        -0.1,
+        0.0
+      ],
+      [
+        8.8,
+        6.1,
+        3.2
+      ]
+    ],
+    "note": "walls x=0/8.8, y=0/6.1, floor z=0, ceiling z=3.2; vents recessed at z=3.35 in a plenum above the ceiling"
+  },
+  "supply": {
+    "n_panels": 3,
+    "size_m": [
+      0.588,
+      0.588
+    ],
+    "z_m": 3.35,
+    "w_m_s": -0.5803,
+    "w_m_s_high_fan": -1.16,
+    "T_K": 286.15,
+    "bc_type": "fixedValue - the CFD value is EXACTLY constant on every point",
+    "row_y_range_m": [
+      2.003,
+      2.591
+    ]
+  },
+  "return": {
+    "n_panels": 3,
+    "size_m": [
+      0.597,
+      0.597
+    ],
+    "z_m": 3.35,
+    "w_m_s_observed": 0.3464,
+    "T_K_observed": 292.09,
+    "bc_type": "pressure outlet - w VARIES per panel (0.316/0.351/0.372), so it is a result, not a prescribed value",
+    "row_y_range_m": [
+      3.55,
+      4.147
+    ]
+  },
+  "leak": {
+    "measured_flow_m3_s": 0.0009,
+    "surface_speed_m_s": {
+      "mean": 0.0678,
+      "max": 0.1444
+    },
+    "area_m2": 0.01331,
+    "bc_type": "pressure outlet - the flow through it is a RESULT, not prescribed",
+    "_comment": "CORRECTED 2026-09-03. The earlier entry claimed ~0.232 m3/s from a supply-minus-return imbalance and asserted the case would not converge without it. That is wrong by 258x: Leak.csv in Case_05 has a mean surface speed of 0.0678 m/s over 0.01331 m2, i.e. 0.0009 m3/s, and the fluid in the door undercut moves at -0.0004 m/s. Prescribing 0.232 m3/s forces 15.5 m/s through the slot and drove a room-wide draft toward the door: whole-room mean speed came out 1.20 m/s against the reference 0.197, almost all of it a coherent v = -0.82. The leak is a pressure outlet that carries almost nothing.",
+    "_unresolved": "The vents in Case_05 do not balance either: net flux over the six panels is -0.192 m3/s (net inflow) while the leak removes 0.0009. So the CSV-sampled vent fluxes are not mass-consistent -- most likely the return panels are point-sampled with a bias, since supply w is exactly constant and return w varies. Do not build a BC on the imbalance."
+  },
+  "thermal_bcs_UNKNOWN": {
+    "_comment": "No surface CSV carries temperature, so the original wall/furniture thermal BCs are not recoverable from the data. We CHOOSE a set and hold it fixed across all our cases; this makes our dataset internally consistent even though it will not reproduce the STAR-CCM+ cases exactly. Values below are the near-surface fluid temperature measured within 5 cm of each surface in Case_07, used as fixed-value wall temperatures.",
+    "TV_K": 308.06,
+    "Sink_K": 297.81,
+    "Wall_01_K": 297.03,
+    "Floor_K": 296.52,
+    "Door_K": 296.34,
+    "Wall_03_K": 296.21,
+    "Wall_02_K": 295.76,
+    "Wall_04_K": 295.3,
+    "Ceiling_K": 294.62,
+    "Table_K": 292.24,
+    "Cabinet_01_K": 293.05,
+    "Cabinet_02_K": 293.44,
+    "Board_K": 291.78,
+    "Column_K": 295.0
+  },
+  "reference": {
+    "rho0_kg_m3": 0.997,
+    "_comment": "The CFD pressure is reduced against rho0 ~ 0.997, NOT the 1.204 rho_ref in the stats file (inherited finding). Any buoyancy term must use 0.997."
+  }
+}

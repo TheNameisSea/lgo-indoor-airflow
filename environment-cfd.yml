@@ -1,0 +1,16 @@
+# CFD environment: dataset generation and split construction. No torch.
+#   conda env create -f environment-cfd.yml
+name: cfdEnv
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - openfoam=2412
+  - numpy=2.4
+  - scipy=1.17
+  - pandas=3.0
+  - matplotlib=3.11
+  - vtk=9.6
+  - pip
+  - pip:
+      - gmsh==4.15.2
