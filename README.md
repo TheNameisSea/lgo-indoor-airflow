@@ -70,8 +70,7 @@ $PY evaluate.py --run runs/NAME --split splits_cfd_gap/val --out results/NAME_va
 
 ```bibtex
 @inproceedings{anonymous2027separation,
-  title     = {Separation-Controlled Layout Generalisation for Three-Dimensional
-               Indoor Airflow Prediction with a Dual-Stream Neural Operator},
+  title     = {LGO: A Local Geometry Branch for Augmenting Neural Operators in 3D Indoor Airflow Prediction},
   author    = {Anonymous Authors},
   booktitle = {Submitted to the International Conference on Learning Representations},
   year      = {2027},
